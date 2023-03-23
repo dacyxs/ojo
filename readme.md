@@ -2,14 +2,19 @@ Ojo Node kurulumu
 
 # Ojo node için incentive testnet olacağı anons edildi. O yüzden katılmak faydalı olabilir. 
 # Güncellemeleri yaparak başlayalım.
+```
 sudo apt update
 sudo apt install -y curl git jq lz4 build-essential unzip
+```
 
+```
 bash <(curl -s "https://raw.githubusercontent.com/nodejumper-org/cosmos-scripts/master/utils/go_install.sh")
 source .bash_profile
+```
 
-#aşağıdaki moniker yazısını username ile değiştirilmesi gerekiyor. 
+#Aşağıdaki moniker yazısını username ile değiştirilmesi gerekiyor. 
 
+```
 #!/bin/bash
 
 NODE_MONIKER="moniker"
@@ -66,23 +71,33 @@ sudo systemctl enable ojod
 sudo systemctl start ojod
 
 sudo journalctl -u ojod -f --no-hostname -o cat
+```
 
 #Aşağıdaki komut ile cüzdan yaratalım.
 
+```
 ojod keys add wallet
+```
 
 #Çıkan cüzdan kurtarma kelimelerini saklamayı unutmayın yoksa cüzdana bir daha erişemeyebilirsiniz. 
 
 #Aşağıdaki komut ile çıkanları bir yere kaydedelim. 
+```
 cat $HOME/.ojo/config/priv_validator_key.json
+```
 
 # node synced olana kadar beklemelisiniz. Aşağıdaki kodun çıktısı FALSE vermeli.
+```
 ojod status 2>&1 | jq .SyncInfo.catching_up
+```
 
 #Discord üzerinden token talep etmeliyiz. Token aldıktan sonra validator kurabiliriz. Aşağıdaki komut ile bakiye kontrol edilebilir. 
+```
 ojod q bank balances $(ojod keys show wallet -a)
+```
 
 #Validator yaratmak için aşağıdaki kodu kullanabilirsiniz.
+```
 ojod tx staking create-validator \
 --amount=9000000uojo \
 --pubkey=$(ojod tendermint show-validator) \
@@ -95,12 +110,18 @@ ojod tx staking create-validator \
 --fees=2000uojo \
 --from=wallet \
 -y
+```
 
 #Aşağıdaki komut ile validator kurulduğuna emin olabilirsiniz. 
+
+```
 ojod q staking validator $(ojod keys show wallet --bech val -a)
+```
 
 
 # pricefeeder yükleyelim.
+
+```
 cd || return
 rm -rf price-feeder
 git clone https://github.com/ojo-network/price-feeder
@@ -157,6 +178,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable price-feeder
 sudo systemctl start price-feeder
 sudo journalctl -u price-feeder -f --no-hostname -o cat
-
+```
 
 # İşlem tamamdır. 
