@@ -1,4 +1,4 @@
-#Ojo Node kurulumu
+Ojo Node kurulumu
 
 # Ojo node için incentive testnet olacağı anons edildi. O yüzden katılmak faydalı olabilir. 
 # Güncellemeleri yaparak başlayalım.
