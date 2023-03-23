@@ -86,7 +86,7 @@ ojod keys add wallet
 cat $HOME/.ojo/config/priv_validator_key.json
 ```
 
-# node synced olana kadar beklemelisiniz. Aşağıdaki kodun çıktısı FALSE vermeli.
+# Node synced olana kadar beklemelisiniz. Aşağıdaki kodun çıktısı FALSE vermeli.
 ```
 ojod status 2>&1 | jq .SyncInfo.catching_up
 ```
@@ -119,7 +119,7 @@ ojod q staking validator $(ojod keys show wallet --bech val -a)
 ```
 
 
-# pricefeeder yükleyelim.
+# Pricefeeder yükleyelim.
 
 ```
 cd || return
