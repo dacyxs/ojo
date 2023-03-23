@@ -1,4 +1,7 @@
-# güncellemeleri yapalım
+#Ojo Node kurulumu
+
+# Ojo node için incentive testnet olacağı anons edildi. O yüzden katılmak faydalı olabilir. 
+# Güncellemeleri yaparak başlayalım.
 sudo apt update
 sudo apt install -y curl git jq lz4 build-essential unzip
 
